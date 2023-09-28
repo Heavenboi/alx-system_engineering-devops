@@ -9,5 +9,5 @@ do
 		"9") echo "bad lucky from Japan";;
 		"17") echo "bad luck from Italy";;
 	esac
-	((count++))
+	(( count++ ))
 done
