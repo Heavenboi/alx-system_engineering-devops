@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Bash script that displays numbers from 1 to 20 and.
+count=1
+while [[ $count -lt 20 ]]
+do 
+	echo $count
+	if [[ $count -eq 4 ]]; then
+		echo "bad luck from Chine"
+	elif [[ $count -eq 9 ]]; then 
+		echo "bad lucky from Japan"
+	elif [[ $count -eq 17 ]]; then
+		echo "bad luck from Italy"
+	fi
+	((count++))
+done
