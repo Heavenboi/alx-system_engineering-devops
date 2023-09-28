@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Bash script that displays numbers from 1 to 20 and.
-count=1
+count=0
 while [[ $count -lt 21 ]]
 do 
 	echo $count
