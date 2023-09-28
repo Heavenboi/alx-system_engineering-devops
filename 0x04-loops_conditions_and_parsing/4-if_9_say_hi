@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This program displays "Best School" 10 times with special handling for the 9th iteration.
+count=1
+
+while [[ $count -le 10 ]]
+do
+    if [[ $count -eq 9 ]]
+    then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+
+    ((count++))
+done
