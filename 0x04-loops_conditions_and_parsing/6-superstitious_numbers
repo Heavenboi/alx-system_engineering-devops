@@ -5,7 +5,7 @@ while [[ $count -lt 20 ]]
 do 
 	echo $count
 	if [[ $count -eq 4 ]]; then
-		echo "bad luck from Chine"
+		echo "bad luck from China"
 	elif [[ $count -eq 9 ]]; then 
 		echo "bad lucky from Japan"
 	elif [[ $count -eq 17 ]]; then
