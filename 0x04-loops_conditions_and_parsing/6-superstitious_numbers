@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Bash script that displays numbers from 1 to 20 and.
 count=1
-while [[ $count -lt 20 ]]
+while [[ $count -lt 21 ]]
 do 
 	echo $count
 	if [[ $count -eq 4 ]]; then
