@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Bash script that displays numbers from 1 to 20 and.
-count=0
-while [ $count -lt 21 ]
+count=1
+while [ $count -le 20 ]
 do 
 	echo "$count"
 	case $count in
