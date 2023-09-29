@@ -3,15 +3,12 @@
 hour=0
 while [[ $hour -le 12 ]]
 do
-    echo "Hour: $hour"
-    
-    minute=1
-    while [[ $minute -le 59 ]]
-    do
-        echo "$minute"
-        ((minute++))
-    done
-
-    ((hour++))
-done | head -n 70
-
+	echo "Hour: $hour"
+	min=0
+	while [[ $min -le 60 ]]
+	do
+		echo "$min"
+		((min++))
+	done
+	((hour++))
+done
