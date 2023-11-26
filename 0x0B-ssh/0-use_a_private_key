@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+# connect to my ubuntu sever
+
+ssh -i ~/.ssh/school ubuntu@100.26.238.165
