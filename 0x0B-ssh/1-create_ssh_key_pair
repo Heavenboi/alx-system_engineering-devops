@@ -1,5 +1,5 @@
 #!/usr/bin/ev bash
 # Bash script that creates an RSA key pair.
 
-ssh-keygen rsa -f school -N betty -t -b 4096
+ssh-keygen -f school -b 4096 -N betty
 
