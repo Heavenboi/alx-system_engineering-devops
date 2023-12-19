@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# A bash script that installs nginx, configures it and adds content to it's html
+# Adds a new redirection within the default server block(/etc/nginx/sites-enabled)
+# Adds a new 404 page when a site cannot be found with a custom message
+# Configures Nginx so that its HTTP response contains a custom header (on web-01 and web-02
+
+sudo apt -y update
+sudo apt -y install nginx
+sudo service nginx start
+sudo echo 'Hello World!' | tee /var/www/html/index.html
+sudo echo -e "Ceci n'est pas une page\n" | tee /var/www/html/404.html
+sudo echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        add_header X-Served-By $HOSTNAME;
+        server_name _;
+
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+
+        location / {
+                try_files \$uri \$uri/ =404;
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+                root /var/www/html;
+                internal;
+        }
+}" | sudo tee /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
