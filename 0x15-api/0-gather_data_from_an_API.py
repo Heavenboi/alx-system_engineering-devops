@@ -1,21 +1,34 @@
 #!/usr/bin/python3
 import requests
+import sys
 
-print("Enter your ID:")
-employee_id = input("")
-api_url_users = 'https://jsonplaceholder.typicode.com/users/' + employee_id
 
-user = requests.get(api_url_users).json()
+def get_user_todo():
+    """
+    a function that return employee's name
+    and number of task they completed
+    """
 
-tasks = 0
-task_name = ""
-for i in range((int(employee_id) - 1) * 20,
-               (int(employee_id)) * 20, 1):
-    api_url_todos = 'https://jsonplaceholder.typicode.com/todos/' + str(i+1)
+    if len(sys.argv) < 2:
+        print("Please provide an employee ID as an argument.")
+        return
+
+    employee_id = int(sys.argv[1])
+    api_url_users = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+
+    user = requests.get(api_url_users).json()
+
+    api_url_todos = f'https://jsonplaceholder.typicode.com/todos?userId =
+    {employee_id}'
     todos = requests.get(api_url_todos).json()
-    if (todos["completed"]):
-        tasks = tasks + 1
-        task_name = task_name + todos["title"] + "\n"
 
-print("Employee", user["name"],
-      " is done with tasks ("+str(tasks)+"/20):\n" + task_name)
+    tasks = sum(1 for todo in todos if todo["completed"])
+    task_names = "\n".join(todo["title"]
+                           for todo in todos if todo["completed"])
+
+    print(f"Employee {user['name']} is done with tasks
+          ({tasks}/20):\n{task_names}")
+
+
+if __name__ == "__main__":
+    get_user_todo()
