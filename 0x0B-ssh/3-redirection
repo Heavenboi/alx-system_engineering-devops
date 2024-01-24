@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Configure your Nginx server so that /redirect_me is redirecting to another page.
 
-sudo service start
+sudo service nginx start
 sudo chown -R "$USER":"$USER" /etc/nginx/sites-enabled/default
 sudo chmod -R 755 /etc/nginx/sites-enabled/default
 sudo echo "server {
@@ -23,4 +23,3 @@ sudo echo "server {
 }" | sudo tee /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
-
